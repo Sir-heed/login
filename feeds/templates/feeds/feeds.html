@@ -1,0 +1,92 @@
+<html>
+{% load staticfiles %}
+<head>
+	<title>Blogversation | Feeds</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  	   <a class="navbar-brand col-sm-1" href="#">
+          <img src="{% static 'images/logo.png' %}" class="img-fluid"> 
+        </a>
+  	<form class="form-inline my-2 my-lg-0 ml-auto col-sm-4">
+      <div class="input-group w-100 mr-sm-2">
+        <input type="text" class="form-control border-right-0" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <span class="input-group-text bg-white fa fa-search fa-lg" id="basic-addon2"></span>
+        </div>
+      </div>
+    </form>
+  </nav>
+  <main class="container-fluid mx-0 py-4 bg-page">
+  	<h3 class="col-12 secondary-color">Feed</h3>
+    <div class="col-12">
+      <div id="categories-tab" class="col-11 col-sm-8 mx-auto d-flex justify-content-space-evenly flex-wrap">
+        <a id="active" href="#" class="text-dark px-4 pill py-2">SPORTS</a>
+        <a href="#" class="text-dark px-4 pill py-2">POLITICS</a>
+        <a href="#" class="text-dark px-4 pill py-2">ENTERTAINMENT</a>
+        <a href="#" class="text-dark px-4 pill py-2">BUSINESS</a>
+        <a href="#" class="text-dark px-4 pill py-2">TECH</a>
+        <a href="#" class="text-dark px-4 pill py-2">HEALTH</a>
+      </div>
+    </div>
+    <div class="col-12 d-flex">
+      <span class="mr-3">Filter: </span>
+      <select>
+        <option>Nigeria</option>
+        <option>United States</option>
+        <option>Russia</option>
+        <option>India</option>
+      </select>
+    </div>
+
+    {% for coll in all_coll %}
+    <section class="mt-4">
+        <h3 class="text-center secondary-color">{{ coll.title }}</h3>
+        <div class="d-flex justify-content-space-evenly flex-wrap mt-4">
+            {% for item in coll.posts.all %}
+          <div class="card m4 post-card">
+            <div class="card-body row px-2">
+              <span class="col-sm pr-sm-1">
+                <img src="{{ item.image_url }}" class="img-fluid">
+              </span>
+              <span class="col-sm pl-1 pr-3 d-flex flex-column justify-content-between mt-2">
+                <h5 class="card-title small font-weight-bold">{{ item.title }}</h5>
+                <p class="card-text small" >{{ item.summary|truncatewords:20 }}</p>
+                <span class="d-flex justify-content-end">
+                  <a href="{{ item.post_url }}" class="text-right button2 text-white px-3 pill">More</a>
+                </span>
+                
+              </span>
+            </div>
+          </div><!-- End of A Post's card --> 
+          {% endfor %}
+        </section>
+    {% endfor %}
+
+</main>
+<footer class="bg-foot py-4">
+    <p class="text-white ml-4 my-auto"><small>Copyright &copy; 2018. - Demz Analytics LTD</small></p>
+</footer>
+  
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html> 
+
+<!-- <div>
+    {% for coll in all_coll %}
+        <p><h1>{{ coll.title }}</h1></p>
+        {% for item in coll.posts.all %}
+        <ul>
+        <li><p>{{ item.title }}</p>
+        <p>{{ item.summary }}</p>
+        <a href="{{ item.post_url }}">Read More</a>></li>
+        </ul>
+        {% endfor %}
+    {% endfor %}
+</div> -->

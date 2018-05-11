@@ -1,0 +1,96 @@
+{% load static %}
+{% block content %}
+
+    <html>
+    <head>
+        <title>Blogversation | Verified</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    </head>
+    <body class="h-100-fixed">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-foot">
+        <a class="navbar-brand col-sm-1" href="#">
+        <img src="{% static 'images/logo2.png' %}" class="img-fluid"> 
+        </a>
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+            <a class="nav-link btn btn-outline-light pill px-5" href="#">Log Out<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ml-5">
+            <span class="py-4 navbar-toggler-icon"></span>
+        </li>
+        </ul>
+    </nav>
+    <main class="container-fluid row bg-white mx-0">
+        <div class="col-sm-5 col-11 mxy-auto">
+            <div class="w-100 text-center">
+            <img src="{% static 'images/approved300.png' %}">
+            </div>
+            <h2 class="text-center">ACCOUNT VERIFIED</h2>
+            <p class="text-center secondary-color">Connecting...</p>
+            <div class="my-progress text-center"></div>
+        </div>
+
+    
+    </main>
+    <footer class="bg-foot">
+        <p class="text-white ml-4 my-auto"><small>Copyright &copy; 2018. - Demz Analytics LTD</small></p>
+    </footer>
+        
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        var n = 3;
+        var time = 1000;
+        var progress = document.querySelector('.my-progress');
+        var dot = [];
+        var counter = 0;
+
+        for (var i = 0; i < n; i++) {
+        dot[i] = document.createElement('div');
+        dot[i].classList.add('dot');
+        progress.appendChild(dot[i]);
+        }
+
+
+        // Reset color of dot to grey
+        function resetProgress(){
+        [1,2,3].map(function(x, i){
+            dot[i].style.background = 'gray';
+        })
+        
+        }
+
+
+        var go = setInterval(async () => {
+        if (counter > 2) {
+            counter = 0; // reset counter
+            resetProgress();
+
+            /** FIX TypeError: Cannot read property 'style' of undefined
+            *   and then call the sleep method
+            *
+            */
+            await sleep(1000/3); 
+            
+        }
+        dot[counter].style.background = 'yellow';
+        counter++;
+        }, time / n)
+
+        
+
+        // Using Promise on set timeout to effect a wait/sleep. Function to be called using await in an async function
+        function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        
+        
+    </script>
+    </body>
+
+    </html>
+{% endblock %}

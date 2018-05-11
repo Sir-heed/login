@@ -1,0 +1,61 @@
+{% load static %}
+
+{% block content %}
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    </head>
+    <body class="h-100-fixed">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-foot">
+        <a class="navbar-brand col-sm-1" href="#">
+        <img src="{% static 'images/logo2.png' %}" class="img-fluid"> 
+        </a>
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+            <a class="nav-link btn btn-outline-light pill px-5" href="#">Sign in<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ml-5">
+            <span class="py-4 navbar-toggler-icon"></span>
+        </li>
+        </ul>
+    </nav>
+	
+	<main class="container-fluid row mx-0">
+			<div class="col-sm row" style="background: #1281FD;">
+			<div class="col-11 col-sm-9 mxy-auto py-5">
+					<h2 class="text-center text-white">Welcome to <span class="text-warning">Blogversation!</span></h2>
+					<p class="text-center px-5 mx-5 my-4 text-white">Enjoy more robust, feature-rich content from your best writer around the world...</p>
+					<img src="{% static 'images/welcome.png' %}" class="img-fluid">
+			</div>
+					
+			</div>
+			<div class="col-sm row bg-white">
+			<div class="col-11 col-sm-9 mxy-auto">
+					<h4 class="text-center" style="color: #12B4DB; font-size: 2.5rem; letter-spacing: 0.25rem">LOGIN</h4>
+	<h1>Log into your account</h1>
+	<form action="" method="POST" class="mt-5" "form-group my-4">
+			{% csrf_token %}
+			<input type="text" class="form-control form-control-lg secondary-color" placeholder="Username" name="username" value=""><br \>
+			<input type="password" class="form-control form-control-lg secondary-color" placeholder="Password" name="password" value="">
+			<button type="submit" value="submit" class="btn button btn-block btn-lg mt-5">Submit</button> 
+	</form>
+  	  	
+  	  </div>	
+  	</div>
+
+  
+  </main>
+  <footer class="bg-foot">
+  	<p class="text-white ml-4 my-auto"><small>Copyright &copy; 2018. - Demz Analytics LTD</small></p>
+  </footer>
+	
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+{% endblock %}
